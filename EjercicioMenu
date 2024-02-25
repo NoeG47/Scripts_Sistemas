@@ -1,0 +1,45 @@
+#!/bin/bash
+#Tenemos un fichero en el que hay nombre de empleado y un salario
+#Hacer un menú que tenga
+#opcion 1 - Mostrar sólo empleados
+#opcion 2 - Alta de todos los empleados
+#opcion 3 - bloquear todos los empleados
+#opcion 4 - Baja de todos los empleados
+
+clear
+salir=0
+while [ $salir -eq 0 ]; do
+    echo "Seleccione la opción: "
+    echo "1 - Mostrar sólo empleados"
+    echo "2 - Alta de todos los empleados"
+    echo "3 - bloquear todos los empleados"
+    echo "4 - Baja de todos los empleados"
+    echo "5 - Salir"
+    read opcion
+
+    case $opcion in
+    1) while IFS=, read nombre salario; do
+        echo Nombre: $nombre Salario: $salario
+    done <empleados.txt ;;
+    2)
+        IFS=,
+        while read nombre salario; do
+            sudo useradd "$nombre"
+        done <empleados.txt
+        ;;
+    3) while IFS=, read nombre salario; do
+        sudo usermod -L "$nombre"
+    done <empleados.txt ;;
+    4) while IFS=, read nombre salario; do
+        sudo deluser $nombre
+    done <empleados.txt ;;
+    5)
+        echo "Fin de la aplicación"
+        salir=1
+        ;;
+    *)
+        echo "Opción no válida"
+        echo ""
+        ;;
+    esac
+done

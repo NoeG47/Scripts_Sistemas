@@ -19,5 +19,3 @@ while [ $# -gt 0 ]; do
 done
 
 echo "Se han pasado $cont argumentos"
-
-            

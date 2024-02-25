@@ -1,0 +1,8 @@
+manzana
+naranja
+arbol
+pera
+manzana
+naranja
+arbol
+manzana
