@@ -4,7 +4,7 @@ $cadena = Read-Host "Por favor, introduce algo"
 # Mostrar la cadena introducida
 #Write-Host "Has introducido: $entradaUsuario"
 
-$cadena.ToUpper();
+$cadena = $cadena.ToUpper();
 if ($cadena -eq "HOLA MUNDO") {
 
     write-host "Ha dicho HOLA MUNDO"
